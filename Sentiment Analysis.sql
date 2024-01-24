@@ -1,6 +1,6 @@
 --BRAND SENTIMENT ANALYSIS BASED ON REVIEWS
 
---STEP ONE: Temporary table with a case statement to assign sentiment categories based on keywords
+--STEP ONE: Create temporary table with a case statement to assign sentiment categories based on keywords
 WITH sentiment AS (
 	SELECT
 		product_id,
@@ -13,7 +13,7 @@ WITH sentiment AS (
 	FROM [reviews_0-250]
 	)
 
---STEP TWO: Aggregating the sentiment data to analyze which brands have the most positive & negative reviews
+--STEP TWO: Aggregate the sentiment data to analyze which brands have the most positive & negative reviews
 --Includes multiple table joins to combine rows from 'product_info', 'reviews_0-250', and 'sentiment' (temp table)
 SELECT
     p.brand_name,
