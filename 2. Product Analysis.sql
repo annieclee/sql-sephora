@@ -1,5 +1,4 @@
-
---BASIC PRODUCT ANALYSIS:
+--PRODUCT ANALYSIS:
 
 --Analyzing top brands based on total sum of loves_count (user 'favorite' feature on website)
 --Also displaying average product rating (rounded) + total # of reviews for each brand
