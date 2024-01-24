@@ -11,16 +11,6 @@ group by brand_name
 order by 2 desc;
 --1. Sephora Collection, 2. Fenty Beauty by Rihanna, 3. Anastasia Beverly Hills, 4. Charlotte Tilbury, 5. The Ordinary
 
---analyzing most "loved" products
-select
-	product_name,
-	brand_name,
-	loves_count,
-	reviews
-from product_info
-order by loves_count desc;
---1. Rare Beauty Soft Pinch Liquid Blush, 2. NARS Radiant Creamy Concealer, 3. Laneige Lip Sleeping Mask, 4. Sephora Cream Lip Stain, 5. Fenty Beauty Gloss Bomb
-
 --identifying products with highest and lowest ratings (over 50 reviews)
 select
 	product_name,
@@ -56,8 +46,3 @@ from product_info
 where tertiary_category is not null
 group by tertiary_category
 order by 1;
-
---identifying the most expensive moisturizers
-select * from product_info
-where tertiary_category = 'Moisturizers'
-order by price_usd desc;
