@@ -1,22 +1,20 @@
 --BRAND SENTIMENT ANALYSIS BASED ON REVIEWS
 
 --STEP ONE: Temporary table with a case statement to assign sentiment categories based on keywords
-
 WITH sentiment AS (
-	select
+	SELECT
 		product_id,
 		review_text,
-		case
-			when LOWER(review_text) like '%love%' or LOWER(review_text) like '%amazing%' or LOWER(review_text) like '%great%' or LOWER(review_text) like '%favorite%' then 'Positive'
-			when LOWER(review_text) like '%hate%' or LOWER(review_text) like '%disappoint%' or LOWER(review_text) like '%overhyped%' or LOWER(review_text) like '%not worth%' then 'Negative'
-			else 'Neutral'
-		end as Sentiment
+		CASE
+			WHEN LOWER(review_text) LIKE '%love%' OR LOWER(review_text) LIKE '%amazing%' OR LOWER(review_text) LIKE '%great%' OR LOWER(review_text) LIKE '%favorite%' THEN 'Positive'
+			WHEN LOWER(review_text) LIKE '%hate%' OR LOWER(review_text) LIKE '%disappoint%' OR LOWER(review_text) LIKE '%overhyped%' OR LOWER(review_text) LIKE '%not worth%' THEN 'Negative'
+			ELSE 'Neutral'
+		END AS Sentiment
 	FROM [reviews_0-250]
 	)
 
 --STEP TWO: Aggregating the sentiment data to analyze which brands have the most positive & negative reviews
 --Includes multiple table joins to combine rows from 'product_info', 'reviews_0-250', and 'sentiment' (temp table)
-
 SELECT
     p.brand_name,
     COUNT(*) AS total_reviews,
@@ -31,3 +29,4 @@ JOIN
 GROUP BY
     p.brand_name
 ORDER BY positive_reviews DESC;
+--Brands with the greatest # of positive reviews: 1. LANEIGE, 2. fresh, 3. Tatcha
